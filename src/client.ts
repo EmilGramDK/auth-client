@@ -18,28 +18,54 @@ class AuthClient {
       return;
     }
 
-    this.auth("login");
+    this.login();
   }
 
+  /**
+   * @description Attempts to log in the user by redirecting them to the authentication URL.
+   */
   public login() {
     this.auth("login");
   }
 
+  /**
+   * @description Logs out the user by clearing tokens and redirecting to the logout URL.
+   * It also deletes the cookies associated with the tokens.
+   */
   public logout() {
     this.clearTokens();
     this.auth("logout");
   }
 
+  /**
+   * @returns the access token if it is valid.
+   * @throws Error if the token is invalid.
+   * @description Returns the access token if it is valid, otherwise throws an error.
+   * It checks if the token is valid by calling `isTokenValid()`.
+   */
   public getToken(): string {
     if (!this.isTokenValid()) throw new Error(AUTH_TOKEN_INVALID);
     return this.tokens!.accessToken;
   }
 
+  /**
+   * @returns the token information if the token is valid.
+   * @throws Error if the token is invalid.
+   * @description Returns the token information if it is valid, otherwise throws an error.
+   * It checks if the token is valid by calling `isTokenValid()`.
+   */
   public getTokenInfo(): TokenInfo {
     if (!this.isTokenValid()) throw new Error(AUTH_TOKEN_INVALID);
     return this.tokenInfo!;
   }
 
+  /**
+   * @returns an object containing the Authorization header with the Bearer token and Content-Type.
+   * @throws Error if the token is invalid.
+   * @description Returns the headers required for authenticated requests.
+   * It includes the Authorization header with the Bearer token and Content-Type set to application/json.
+   * It checks if the token is valid by calling `isTokenValid()`.
+   */
   public getAuthHeaders(): Record<string, string> {
     if (!this.isTokenValid()) throw new Error(AUTH_TOKEN_INVALID);
     return {
@@ -48,6 +74,12 @@ class AuthClient {
     };
   }
 
+  /**
+   * @returns true if tokens are found and set, false otherwise.
+   * @description Checks for tokens in cookies or URL parameters.
+   * If tokens are found, they are set and the expiration is scheduled.
+   * If no tokens are found, it returns false and logs a warning.
+   */
   private checkForTokens(): boolean {
     if (this.checkCookieForTokens()) return true;
     if (this.checkURLForTokens()) return true;
@@ -55,6 +87,14 @@ class AuthClient {
     return false;
   }
 
+  /**
+   *
+   * @param token string
+   * @param refreshToken string | null
+   * @description Sets the access token and refresh token.
+   * It also extracts token information and schedules the expiration.
+   * If an error occurs during this process, it clears the tokens and logs the error.
+   */
   private setTokens(token: string, refreshToken: string | null = null) {
     try {
       this.tokens = {
