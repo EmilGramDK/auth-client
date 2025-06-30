@@ -32,3 +32,4 @@ export function useAuthClient(): AuthClient {
 export type AuthClient = ReturnType<typeof createClient>;
 
 export * from "./types";
+export * from "./api";

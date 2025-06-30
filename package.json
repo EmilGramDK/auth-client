@@ -1,6 +1,6 @@
 {
   "name": "@emilgramdk/auth-client",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "scripts": {
     "build": "tsup",
     "lint": "eslint src --ext .ts",
@@ -33,5 +33,8 @@
     "lint-staged": "^15.4.3",
     "tsup": "^8.4.0",
     "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "@emilgramdk/utils": "^1.0.17"
   }
 }
