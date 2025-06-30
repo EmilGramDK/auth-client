@@ -224,7 +224,7 @@ class AuthClient {
     }
   }
 
-  public static getInstance(): AuthClient | null {
+  public static getInstance(): AuthClient {
     if (AuthClient.instance) return AuthClient.instance;
     throw new Error("AuthClient instance does not exist. Use createInstance() to create it.");
   }
@@ -238,11 +238,11 @@ class AuthClient {
   }
 }
 
-export const createAuthClient = (config: AuthConfig): AuthClient => {
+export const createClient = (config: AuthConfig): AuthClient => {
   const instance = AuthClient.createInstance(config);
   return instance;
 };
 
-export const getAuthClient = (): AuthClient | null => {
+export const getClient = (): AuthClient => {
   return AuthClient.getInstance();
 };

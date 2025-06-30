@@ -1,4 +1,4 @@
-import { createAuthClient } from "./client";
+import { createClient, getClient } from "./client";
 import { AuthConfig, DefaultConfig } from "./types";
 import { mergeConfig } from "./utils";
 
@@ -14,11 +14,21 @@ const defaultConfig: DefaultConfig = {
  * Merges the provided config with the default configuration and initializes the AuthClient.
  * If the `disableAutoLogin` flag is set to true, the client will not attempt to log in automatically.
  */
-export function useAuthClient(config: Partial<AuthConfig>): AuthClient {
+export function createAuthClient(config: Partial<AuthConfig>): AuthClient {
   const mergedConfig = mergeConfig(defaultConfig, config);
-  return createAuthClient(mergedConfig);
+  const client = createClient(mergedConfig);
+  return client;
 }
 
-export type AuthClient = ReturnType<typeof createAuthClient>;
+/**
+ * @description retrieves the current AuthClient instance.
+ * @returns An instance of AuthClient.
+ */
+export function useAuthClient(): AuthClient {
+  const client = getClient();
+  return client;
+}
+
+export type AuthClient = ReturnType<typeof createClient>;
 
 export * from "./types";
