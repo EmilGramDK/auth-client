@@ -1,8 +1,8 @@
 import { AbortableAPIService } from "@emilgramdk/utils";
-import { getClient } from "./client";
+import { useAuthClient } from ".";
 
 export class APIClientService extends AbortableAPIService {
-  private authClient = getClient();
+  private authClient = useAuthClient();
 
   protected async fetch<T>(key: string, url: string, options: RequestInit = {}): Promise<T> {
     options.headers = this.authClient.getAuthHeaders();

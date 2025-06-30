@@ -2,8 +2,7 @@ import { AUTH_AUTOLOGIN_DISABLED, AUTH_FAILED_TO_REFRESH, AUTH_TOKEN_INVALID } f
 import { AuthConfig, TokenInfo, Tokens } from "./types";
 import { deleteCookie, extractInfoFromToken, getCookie, setCookie } from "./utils";
 
-class AuthClient {
-  private static instance: AuthClient | null = null;
+export class AuthClientClass {
   private config: AuthConfig;
   private tokens: Tokens | null = null;
   private tokenInfo: TokenInfo | null = null;
@@ -223,26 +222,4 @@ class AuthClient {
       this.refreshTimeoutId = null;
     }
   }
-
-  public static getInstance(): AuthClient {
-    if (AuthClient.instance) return AuthClient.instance;
-    throw new Error("AuthClient instance does not exist. Use createInstance() to create it.");
-  }
-
-  public static createInstance(config: AuthConfig): AuthClient {
-    if (!AuthClient.instance) {
-      AuthClient.instance = new AuthClient(config);
-      return AuthClient.instance;
-    }
-    throw new Error("AuthClient instance already exists. Use getInstance() to access it.");
-  }
 }
-
-export const createClient = (config: AuthConfig): AuthClient => {
-  const instance = AuthClient.createInstance(config);
-  return instance;
-};
-
-export const getClient = (): AuthClient => {
-  return AuthClient.getInstance();
-};
