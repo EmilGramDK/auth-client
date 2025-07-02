@@ -1,4 +1,4 @@
-import { AuthClientClass } from "./client";
+import { AuthClient, AuthClientClass } from "./client";
 import { AUTH_CLIENT_NOT_INITIALIZED } from "./conts";
 import { AuthConfig, DefaultConfig } from "./types";
 import { mergeConfig } from "./utils";
@@ -32,6 +32,6 @@ export function useAuthClient(): AuthClientClass {
   return client;
 }
 
-export type AuthClient = AuthClientClass;
+export type { AuthClient } from "./client";
+export { AuthAPIService } from "./api";
 export * from "./types";
-export * from "./api";

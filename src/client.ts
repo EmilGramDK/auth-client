@@ -20,6 +20,10 @@ export class AuthClientClass {
     this.login();
   }
 
+  public getConfig(): AuthConfig {
+    return this.config;
+  }
+
   /**
    * @description Attempts to log in the user by redirecting them to the authentication URL.
    */
@@ -223,3 +227,5 @@ export class AuthClientClass {
     }
   }
 }
+
+export type AuthClient = AuthClientClass;
