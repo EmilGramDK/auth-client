@@ -16,6 +16,6 @@ export class AuthAPIService extends AbortableAPIService {
       ...(options.headers || {}),
       ...this.authClient.getAuthHeaders(),
     };
-    return this.fetch<T>(key, `${this.baseURL}/${url}`, options);
+    return super.fetch<T>(key, `${this.baseURL}/${url}`, options);
   }
 }
