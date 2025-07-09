@@ -1,12 +1,12 @@
-import { AuthClient, AuthClientClass } from "./client";
+import { type AuthClient, AuthClientClass } from "./client";
 import { AUTH_CLIENT_NOT_INITIALIZED } from "./conts";
-import { AuthConfig, DefaultConfig } from "./types";
+import type { AuthConfig, DefaultConfig } from "./types";
 import { mergeConfig } from "./utils";
 
 const defaultConfig: DefaultConfig = {
-  storageKey: "authToken",
-  application: "default",
-  disableAutoLogin: false,
+	storageKey: "authToken",
+	application: "default",
+	disableAutoLogin: false,
 };
 
 let client: AuthClient | null = null;
@@ -18,9 +18,9 @@ let client: AuthClient | null = null;
  * If the `disableAutoLogin` flag is set to true, the client will not attempt to log in automatically.
  */
 export function createAuthClient(config: Partial<AuthConfig>): AuthClientClass {
-  const mergedConfig = mergeConfig(defaultConfig, config);
-  client = new AuthClientClass(mergedConfig);
-  return client;
+	const mergedConfig = mergeConfig(defaultConfig, config);
+	client = new AuthClientClass(mergedConfig);
+	return client;
 }
 
 /**
@@ -28,10 +28,10 @@ export function createAuthClient(config: Partial<AuthConfig>): AuthClientClass {
  * @returns An instance of AuthClient.
  */
 export function useAuthClient(): AuthClientClass {
-  if (!client) throw new Error(AUTH_CLIENT_NOT_INITIALIZED);
-  return client;
+	if (!client) throw new Error(AUTH_CLIENT_NOT_INITIALIZED);
+	return client;
 }
 
-export type { AuthClient } from "./client";
 export { AuthAPIService } from "./api";
+export type { AuthClient } from "./client";
 export * from "./types";

@@ -1,40 +1,39 @@
 {
-  "name": "@emilgramdk/auth-client",
-  "version": "0.1.6",
-  "scripts": {
-    "build": "tsup",
-    "lint": "eslint src --ext .ts",
-    "prepublishOnly": "npm run build"
-  },
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/EmilGramDK/auth-client.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/EmilGramDK/auth-client/issues"
-  },
-  "homepage": "https://github.com/EmilGramDK/auth-client#readme",
-  "description": "",
-  "devDependencies": {
-    "eslint": "^9.21.0",
-    "husky": "^9.1.7",
-    "lint-staged": "^15.4.3",
-    "tsup": "^8.4.0",
-    "typescript": "^5.8.2"
-  },
-  "dependencies": {
-    "@emilgramdk/utils": "^1.0.17"
-  }
+	"name": "@emilgramdk/auth-client",
+	"version": "0.1.6",
+	"scripts": {
+		"build": "biome lint ./src --write && tsup ",
+		"lint": "biome lint ./src --write",
+		"format": "biome format ./src --write",
+		"prepublishOnly": "bunx biome check ./src --write && bunx tsup"
+	},
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/EmilGramDK/auth-client.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/EmilGramDK/auth-client/issues"
+	},
+	"homepage": "https://github.com/EmilGramDK/auth-client#readme",
+	"description": "",
+	"devDependencies": {
+		"@biomejs/biome": "2.1.1",
+		"tsup": "^8.5.0",
+		"typescript": "^5.8.3"
+	},
+	"dependencies": {
+		"@emilgramdk/utils": "^1.0.18"
+	}
 }

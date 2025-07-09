@@ -1,0 +1,127 @@
+{
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"vcs": {
+		"enabled": false,
+		"clientKind": "git",
+		"useIgnoreFile": false
+	},
+	"files": {
+		"ignoreUnknown": false
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"complexity": {
+				"noUselessCatch": "error",
+				"noUselessSwitchCase": "error",
+				"noUselessEmptyExport": "warn",
+				"noUselessRename": "warn",
+				"noUselessTernary": "warn",
+				"noUselessTypeConstraint": "warn",
+				"noUselessConstructor": "warn",
+				"noUselessContinue": "warn",
+				"noUselessEscapeInRegex": "warn",
+				"noUselessFragments": "warn",
+				"noUselessThisAlias": "warn",
+				"useFlatMap": "warn",
+				"useArrowFunction": "warn",
+				"noThisInStatic": "warn"
+			},
+			"suspicious": {
+				"noDocumentCookie": "off",
+				"noDoubleEquals": "warn",
+				"noDebugger": "warn",
+				"noAlert": "warn",
+				"noExplicitAny": "error",
+				"noImplicitAnyLet": "error",
+				"noVar": "warn",
+				"noConsole": {
+					"level": "warn",
+					"options": {
+						"allow": ["warn", "error", "info"]
+					}
+				}
+			},
+			"style": {
+				"noDefaultExport": "warn",
+				"useConsistentArrayType": "warn",
+				"useExponentiationOperator": "warn",
+				"useImportType": "warn",
+				"noParameterAssign": "error",
+				"noEnum": "error",
+				"useConst": "error",
+				"useTemplate": "error",
+				"useCollapsedIf": "error",
+				"useCollapsedElseIf": "error",
+				"useDefaultParameterLast": "error",
+				"useThrowOnlyError": "error",
+				"useThrowNewError": "error",
+				"useExportType": "error",
+				"noNegationElse": "error",
+				"noUselessElse": "error",
+				"noCommonJs": "error",
+				"noUnusedTemplateLiteral": "error",
+				"useNamingConvention": "off",
+				"noNonNullAssertion": "off"
+			},
+			"correctness": {
+				"noConstAssign": "error"
+			},
+			"nursery": {
+				"useForComponent": "error",
+				"noSecrets": "error",
+				"noAwaitInLoop": "error",
+				"noUselessEscapeInString": "error",
+				"useExplicitType": "off",
+				"noExcessiveLinesPerFunction": {
+					"level": "error",
+					"options": {
+						"maxLines": 25,
+						"skipBlankLines": true,
+						"skipIifes": true
+					}
+				}
+			},
+			"performance": {
+				"useTopLevelRegex": "error"
+			}
+		}
+	},
+	"formatter": {
+		"enabled": true,
+		"formatWithErrors": true,
+		"bracketSameLine": true,
+		"bracketSpacing": true,
+		"attributePosition": "auto",
+		"indentStyle": "tab",
+		"indentWidth": 2,
+		"lineWidth": 120,
+		"lineEnding": "lf"
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "double",
+			"arrowParentheses": "always",
+			"bracketSameLine": true,
+			"bracketSpacing": true,
+			"jsxQuoteStyle": "double",
+			"quoteProperties": "asNeeded",
+			"semicolons": "always",
+			"trailingCommas": "all"
+		}
+	},
+	"json": {
+		"formatter": {
+			"trailingCommas": "none"
+		}
+	},
+	"assist": {
+		"enabled": true,
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		}
+	}
+}
