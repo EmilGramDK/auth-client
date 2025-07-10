@@ -30,7 +30,7 @@ jobs:
           git config --global user.name "EmilGramDK"
 
       - name: Bump version
-        run: bun pm version --message "Bump version to %s"
+        run: bun pm version patch --message "Bump version to %s"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
