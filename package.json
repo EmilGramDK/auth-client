@@ -1,6 +1,6 @@
 {
 	"name": "@emilgramdk/auth-client",
-	"version": "0.1.6",
+	"version": "0.1.7",
 	"scripts": {
 		"build": "biome lint ./src --write && tsup ",
 		"lint": "biome lint ./src --write",
