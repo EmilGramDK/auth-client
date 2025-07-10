@@ -87,7 +87,7 @@ export class AuthClientClass {
 		if (this.checkCookieForTokens()) return true;
 		if (this.checkURLForTokens()) return true;
 		console.warn("No tokens found in URL or cookies.");
-		return false;
+		return this.isTokenValid();
 	}
 
 	/**
@@ -125,6 +125,7 @@ export class AuthClientClass {
 	 * The URL will include the current page as the next parameter, along with database and application
 	 */
 	private auth(type: "login" | "logout") {
+		this.clearTokens();
 		const params = new URLSearchParams({
 			next: window.location.href,
 			database: this.config.database || "",
